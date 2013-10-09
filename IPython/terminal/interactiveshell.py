@@ -669,6 +669,8 @@ class TerminalInteractiveShell(InteractiveShell):
         if self.confirm_exit:
             if self.ask_yes_no('Do you really want to exit ([y]/n)?','y'):
                 self.ask_exit()
+            elif self.has_readline:
+                self.readline_startup_hook(self.pre_readline)
         else:
             self.ask_exit()
 
